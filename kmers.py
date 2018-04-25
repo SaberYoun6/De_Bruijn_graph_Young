@@ -2,6 +2,8 @@
 import pdb
 import networkx as nx
 import sys
+import matplotlib.pyplot as plt
+import pygraphviz as pgv
 # this will create the inital call to the kmers value 
 class method:
    # def kmers(self,value,seq):
@@ -28,8 +30,14 @@ class method:
             nodes.add(side[i:i+value-1])
             nodes.add(side[i+1:i+value])
         return nodes,edges
-    def v_de_brujin(self,value,side):
-        nx.algorithms.euler.eulerian_circuit(side,value)
+    def visualization(self,value,side):
+        nodes,edges=self.de_burjin(value,side)
+        G=nx.Graph()
+        G=nx.algorithms.euler.eulerian_circuit(edges,nodes)
+        nx.draw(G)
+        plt.savfig("de_burgin_eulerain.png")
+        plt.show()
+
 
 def main():
    meth=method()
@@ -42,10 +50,10 @@ def main():
    sub=int(sub)
    neon =input("please input a short genome: ")
    print(type(neon))
-   seq,k=meth.de_burjin(sub,neon)
+   seq,k = meth.de_burjin(sub,neon)
    print (seq) 
    print (k)
-   print (meth.v_de_brujin(seq,k))
+   print (meth.visualization(sub,neon))
   
 main() 
 
