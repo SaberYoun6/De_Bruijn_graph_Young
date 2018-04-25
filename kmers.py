@@ -21,7 +21,8 @@ class method:
    #     j=i
    #     if (j== len(seq)):
    #         self.kmers(value,seq)
-   #     return side 
+   #return side
+   ###################I did while following along in a video on john hopkins on how to de burjin graph in python#################
     def de_burjin(self,value,side):
         edges=[]
         nodes=set()
@@ -30,6 +31,7 @@ class method:
             nodes.add(side[i:i+value-1])
             nodes.add(side[i+1:i+value])
         return nodes,edges
+    ################ trying to be transparent ###################### 
     def visualization(self,value,side):
         nodes,edges=self.de_burjin(value,side)
         G=nx.Graph()
